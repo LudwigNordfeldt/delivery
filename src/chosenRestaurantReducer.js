@@ -5,9 +5,6 @@ const RestSlice = createSlice({
   initialState: null,
   reducers: {
     choose(state, action) {
-        console.log("PAYLOAD IS:", action.payload)
-        console.log(action.payload.rest)
-        //state = action.payload.rest;
         return action.payload.rest
     },
     forsake(state, action) {

@@ -8,7 +8,6 @@ import RestaurantService from "../services/restaurant"
 
 const Shop = () => {
   const store = useStore().getState()
-  console.log(store)
   const [restaurants, setRestaurants] = useState(null)
   const [foods, setFoods] = useState(null)
   const [restName, setRestName] = useState(null)
@@ -38,7 +37,7 @@ const Shop = () => {
       </div>
       <div>
         <h3>Chosen restaurant: {restName ? restName : 'None'}</h3>
-        {foods ? <FoodList foods={foods}></FoodList> : <></>}
+        {foods ? <FoodList foods={foods} setName={setRestName}></FoodList> : <></>}
       </div>
     </div>
   );

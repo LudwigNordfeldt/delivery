@@ -13,6 +13,7 @@ import Cart from "./pages/cart";
 import Shop from "./pages/shop";
 import History from "./pages/history";
 import Map from "./components/map";
+import Coupons from "./pages/coupons";
 
 import LoginDialog from "./components/login"
 import RegisterDialog from "./components/register"
@@ -65,6 +66,8 @@ const App = () => {
               </div>
             </Link>
 
+            <Divider orientation="vertical" flexItem sx={{backgroundColor:'black'}}></Divider>
+
             <Link to="/map">
               <div className="nav">
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -74,6 +77,18 @@ const App = () => {
               </div>
             </Link>
 
+            <Divider orientation="vertical" flexItem sx={{backgroundColor:'black'}}></Divider>
+
+            <Link to="/coupons">
+              <div className="nav">
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                  Coupons
+                </Typography>
+                <ShoppingCartIcon />
+              </div>
+            </Link>
+
+            {console.log(user)}
             {user ? <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>{user.username}</Typography> : <LoginDialog onComplete={setUser}></LoginDialog>}
             {user ? <LogOut onComplete={setUser}> </LogOut> : <RegisterDialog></RegisterDialog>}
           </Toolbar>
@@ -85,6 +100,7 @@ const App = () => {
         <Route path="/cart" element={<Cart user={user}/>}></Route>
         <Route path="/history" element={<History user={user}/>}></Route>
         <Route path="/map" element={<Map/>}></Route>
+        <Route path="/coupons" element={<Coupons/>}></Route>
       </Routes>
     </Router>
   );

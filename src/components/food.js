@@ -2,13 +2,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createOrder } from '../reducer'
 import { choose } from '../chosenRestaurantReducer'
 
-import { useReducer } from 'react'
-
 import { useState } from 'react'
 
-const Food = props => {
-    const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
-
+const Food = ({food, setName}) => {
     const [not, setNot] = useState('')
     const dispatch = useDispatch()
     const order = useSelector(state => state.order)
@@ -24,7 +20,7 @@ const Food = props => {
 
         if(order.length === 0) {
             dispatch(choose({rest}))
-            forceUpdate()
+            setName(rest)
         }
 
         dispatch(createOrder({name, cost, pic, number: 1}))
@@ -32,10 +28,10 @@ const Food = props => {
 
     return(
         <div>
-            <p>{props.food.name}</p>
-            <p>{props.food.cost}</p>
-            <img src={props.food.pic} alt="" height='50pt' width='50pt'></img>
-            <button onClick={handleClick(props.food.name, props.food.cost, props.food.pic, props.food.restaurant)}>Add to Cart</button>
+            <p>{food.name}</p>
+            <p>{food.cost}</p>
+            <img src={food.pic} alt="" height='50pt' width='50pt'></img>
+            <button onClick={handleClick(food.name, food.cost, food.pic, food.restaurant)}>Add to Cart</button>
             <p>{not}</p>
         </div>
     )

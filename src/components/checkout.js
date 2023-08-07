@@ -72,10 +72,10 @@ const ButtonWrapper = ({ currency, showSpinner, amount, user }) => {
     );
 }
 
-export default function Checkout({user}) {
+export default function Checkout({user, discount}) {
     const order = useSelector(state => state.order)
     // This values are the props in the UI
-    const amount = sum(order).toString();
+    const amount = sum(order)*(1-discount).toString();
     const currency = "USD";
 	return (
 		<div style={{ maxWidth: "750px", minHeight: "200px" }}>

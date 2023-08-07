@@ -1,10 +1,10 @@
 import Food from "./food"
 
-const FoodList = props => {
+const FoodList = ({foods, setName}) => {
     return(
         <div className="foods" style={{display: 'flex'}}>
-        {props.foods.map(el => (
-        <Food food={el}/>
+        {foods.map(el => (
+        <Food food={el} setName={setName} />
     ))}
     </div>
     )
